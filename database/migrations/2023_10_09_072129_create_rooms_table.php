@@ -16,8 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_roomtype');
             $table->foreign('id_roomtype')->references('id_roomtype')->on('roomtypes');
             $table->string('status');
-            $table->unsignedBigInteger('id_branch');
-            $table->foreign('id_branch')->references('id_branch')->on('branches');
         });
     }
 

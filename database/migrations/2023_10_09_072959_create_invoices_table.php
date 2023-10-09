@@ -22,10 +22,8 @@ return new class extends Migration
             $table->date('pay_date');
 
             $table->unsignedBigInteger('id_guest');
-            $table->unsignedBigInteger('id_roomtype')->nullable();
-            $table->unsignedBigInteger('id_branch')->nullable();
-            $table->foreign('id_branch')->references('id_branch')->on('branches');
-            $table->foreign('id_guest')->references('id_guest')->on('guest');
+            $table->unsignedBigInteger('id_roomtype');
+            $table->foreign('id_guest')->references('id_guest')->on('guests');
             $table->foreign('id_roomtype')->references('id_roomtype')->on('roomtypes');
         });
     }
