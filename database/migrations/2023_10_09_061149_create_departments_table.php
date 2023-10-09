@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id('id_department');
             $table->string('department_name');
+            $table->integer('salary');
         });
     }
 

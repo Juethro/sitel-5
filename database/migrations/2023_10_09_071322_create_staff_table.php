@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id('id_staff');
+            $table->string('staff_name',30);
+            $table->string('staff_address');
+            $table->string('phone_number');
             $table->unsignedBigInteger('id_department');
             $table->foreign('id_department')->references('id_department')->on('departments');
             $table->string('position');
-            $table->unsignedBigInteger('id_branch');
-            $table->foreign('id_branch')->references('id_branch')->on('branches');
         });
     }
 

@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('branches', function (Blueprint $table) {
-            $table->id('id_branch');
-            $table->string('branch_name');
-            $table->string('brach_addr');
-            $table->integer('room_count');
+        Schema::create('inventories', function (Blueprint $table) {
+            $table->id('id_thing');
+            $table->unsignedBigInteger('id_room');
+            $table->foreign('id_room')->references('id_room')->on('rooms');
+            $table->string('description');
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('inventories');
     }
 };
