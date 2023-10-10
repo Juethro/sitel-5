@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class booking extends Model
+class Booking extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $fillable = ['booking_date', 'start_date', 'finish_date', 'id_guest', 'id_room'];
 }
