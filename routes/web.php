@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::get('/', function () {
 
 Route::post('/postBooking', [BookingController::class, 'submitBooking']);
 Route::get('/booking', [BookingController::class, 'viewBooking']);
+
+Route::resource('/staff', StaffController::class);
