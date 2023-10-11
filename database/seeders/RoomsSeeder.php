@@ -14,9 +14,9 @@ class RoomsSeeder extends Seeder
     public function run(): void
     {
         DB::table('rooms')->insert([
-            ['room_number' => '103A', 'id_roomtype' => 1, 'status' => 'Ready'],
-            ['room_number' => '102B', 'id_roomtype' => 2, 'status' => 'Ready'],
-            ['room_number' => '85C', 'id_roomtype' => 3, 'status' => 'Ready'],
+            ['room_number' => '103A', 'id_roomtype' => 1, 'status' => 'ready'],
+            ['room_number' => '102B', 'id_roomtype' => 2, 'status' => 'ready'],
+            ['room_number' => '85C', 'id_roomtype' => 3, 'status' => 'ready'],
             // Tambahkan data lain sesuai kebutuhan
         ]);
     }

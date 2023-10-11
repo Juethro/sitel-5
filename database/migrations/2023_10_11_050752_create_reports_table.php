@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventories', function (Blueprint $table) {
-            $table->id('id_thing');
+        Schema::create('reports', function (Blueprint $table) {
+            $table->id('id_report');
             $table->unsignedBigInteger('id_room');
             $table->foreign('id_room')->references('id_room')->on('rooms');
             $table->string('description');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventories');
+        Schema::dropIfExists('reports');
     }
 };

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('booking_date');
             $table->date('start_date');
             $table->date('finish_date');
+            $table->integer('total_pay');
             
             $table->unsignedBigInteger('id_guest');
             $table->unsignedBigInteger('id_room');

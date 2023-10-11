@@ -5,13 +5,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Staff;
+use App\Models\staff;
 
 class StaffController extends Controller
 {
     public function index()
     {
-        $staff = Staff::orderBy('id_staff')->get();
+        $staff = staff::orderBy('id_staff')->get();
 
         return view('staff.index', compact('staff')); //display list
     }

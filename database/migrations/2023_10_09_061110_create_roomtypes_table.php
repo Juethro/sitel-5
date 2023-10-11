@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('bedsize');
             $table->integer('bed_count');
             $table->integer('max_cap');
+            $table->integer('price_per_night');
         });
     }
 
