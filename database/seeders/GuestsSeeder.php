@@ -15,7 +15,7 @@ class GuestsSeeder extends Seeder
     {
         DB::table('guests')->insert([
             ['guest_name' => 'Asfa', 'guest_phone' => '1234567890', 'guest_address' =>'Pagesangan'],
-            ['guest_name' => 'Kenang', 'guest_phone' => '2134567890', 'guest_addess' =>'Bekasi'],
+            ['guest_name' => 'Kenang', 'guest_phone' => '2134567890', 'guest_address' =>'Bekasi'],
             ['guest_name' => 'Kridiw', 'guest_phone' => '3214567890', 'guest_address' =>'Solo'],
             // Tambahkan data lain sesuai kebutuhan
         ]);
