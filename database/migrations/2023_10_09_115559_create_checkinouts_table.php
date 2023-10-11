@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id('id_check');
             $table->unsignedBigInteger('id_booking');
             $table->foreign('id_booking')->references('id_booking')->on('bookings');
-            $table->date('start_date');
-            $table->date('finish_date');
+            $table->date('start_date')->nullable();
+            $table->date('finish_date')->nullable();
         });
     }
 

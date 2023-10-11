@@ -17,8 +17,8 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('finish_date');
             
-            $table->enum('id_guest', ['1', '2', '3']);
-            $table->enum('id_room', ['1', '2', '3']);
+            $table->unsignedBigInteger('id_guest');
+            $table->unsignedBigInteger('id_room');
 
             $table->foreign('id_guest')->references('id_guest')->on('guests');
             $table->foreign('id_room')->references('id_room')->on('rooms');
