@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ComplaintController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +38,8 @@ Route::get('/staff/{id}/edit', [StaffController::class, 'edit'])->name('staff.ed
 Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff.update');
 
 Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
+
+Route::get('/reports' , [ReportController::class, 'showForm'])->name('show.form');
+Route::post('/reports' , [ReportController::class, 'submitReport'])->name('submit.form');
+
+
