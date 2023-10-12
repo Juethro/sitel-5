@@ -1,5 +1,5 @@
 @extends('layouts.app')
- 
+
 @section('body')
     <h1 class="mb-0">Staff Baru</h1>
     <hr />
