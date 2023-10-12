@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class checkinout extends Model
-{
-    use HasFactory;
+// ModelB.php
+class ModelB extends Model {
+    public function modelC() {
+        return $this->hasOne(ModelC::class);
+    }
 }

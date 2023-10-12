@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\StaffController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ComplaintController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +41,14 @@ Route::get('/reports' , [ReportController::class, 'showForm'])->name('show.form'
 Route::post('/reports' , [ReportController::class, 'submitReport'])->name('submit.form');
 
 
+
+
+Route::resource('/checkin', CheckInController::class);
+Route::resource('/checkout', CheckOutController::class);
+
+Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
+Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
+
+
+// Route::get('/checkinout', 'CheckInOutController@index');
+//Route::resource('/checkinout', [CheckInOutController::class, 'index']);
