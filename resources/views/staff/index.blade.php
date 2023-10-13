@@ -35,9 +35,9 @@
                         <td class="align-middle">{{ $rs->position }}</td>
                         <td class="align-middle">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="{{ route('staff.show', $rs->id_staff) }}" type="button" class="btn btn-secondary">Detail</a>
-                                <a href="{{ route('staff.edit', $rs->id_staff)}}" type="button" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('staff.destroy', $rs->id_staff) }}" method="POST" type="button" class="btn btn-danger m-0" onsubmit="return confirm('Delete?')">
+                                    <a href="{{ route('staff.show', $rs->id_staff) }}" type="button" class="btn btn-secondary">Detail</a>
+                                    <a href="{{ route('staff.edit', $rs->id_staff)}}" type="button" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('staff.destroy', $rs->id_staff) }}" method="POST" type="button" class="btn btn-danger m-0" onsubmit="return confirm('Delete?')">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger m-0">Delete</button>
