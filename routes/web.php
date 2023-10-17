@@ -5,6 +5,8 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\CheckInController;
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +35,7 @@ Route::get('/staff/{id}/edit', [StaffController::class, 'edit'])->name('staff.ed
 Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff.update');
 Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
 
-Route::get('/reports' , [ReportController::class, 'showForm'])->name('show.form');
+Route::get('/reports' , [ReportController::class, 'showForm'])->name('room.report');
 Route::post('/reports' , [ReportController::class, 'submitReport'])->name('submit.form');
 
 Route::resource('/checkin', CheckInController::class);
@@ -41,6 +43,8 @@ Route::resource('/checkout', CheckOutController::class);
 Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
 Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
 
+Route::get('/rooms', [RoomController::class, 'index'])->name('room.index');
+Route::get('/rooms/{id}', [RoomController::class, 'update_status'])->name('room.update');
 
 // Route::get('/checkinout', 'CheckInOutController@index');
 //Route::resource('/checkinout', [CheckInOutController::class, 'index']);
