@@ -23,10 +23,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/booking', [BookingController::class, 'showBookingForm'])->name('booking.form');
-Route::post('/check-availability', [BookingController::class, 'checkAvailability'])->name('checkAvailability');
+#Receptionist
+Route::get('/booking', [BookingController::class, 'showBookingForm'])->name('receptionist.index');
+Route::post('/booking/check-availability', [BookingController::class, 'roomAvailable'])->name('roomAvailable');
+Route::resource('/checkin', CheckInController::class);
+Route::resource('/checkout', CheckOutController::class);
+Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
+Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
 
-
+#HRD
 Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
 Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
 Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
@@ -35,14 +40,9 @@ Route::get('/staff/{id}/edit', [StaffController::class, 'edit'])->name('staff.ed
 Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff.update');
 Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
 
+#Room Service / House Keeper
 Route::get('/reports' , [ReportController::class, 'showForm'])->name('room.report');
 Route::post('/reports' , [ReportController::class, 'submitReport'])->name('submit.form');
-
-Route::resource('/checkin', CheckInController::class);
-Route::resource('/checkout', CheckOutController::class);
-Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
-Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
-
 Route::get('/rooms', [RoomController::class, 'index'])->name('room.index');
 Route::get('/rooms/{id}', [RoomController::class, 'update_status'])->name('room.update');
 
