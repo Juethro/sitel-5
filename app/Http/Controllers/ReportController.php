@@ -27,7 +27,7 @@ class ReportController extends Controller
             $report->id_room = 1; 
             $report->save(); 
 
-            return redirect()->route('show.form')->with('message' , 'Laporan Keluhan berhasil disimpan');
+            return redirect()->route('room.report')->with('message' , 'Laporan Keluhan berhasil disimpan');
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()]);
