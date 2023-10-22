@@ -6,6 +6,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\CheckInController;
 use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\RoomController;
 
 /*
@@ -26,11 +27,15 @@ Route::get('/', function () {
 #Receptionist
 Route::get('/receptionist', [BookingController::class, 'showRecepDash'])->name('receptionist.index');
 Route::post('/receptionist/check-availability', [BookingController::class, 'roomAvailable'])->name('receptionist.roomAvailable');
-Route::post('/booking/{roomId}', [BookingController::class, 'showBookingForm'])->name('receptionist.booking');
+Route::post('/receptionist/booking/{roomId}', [BookingController::class, 'storeGuest'])->name('receptionist.guest.store');
 Route::resource('/checkin', CheckInController::class);
 Route::resource('/checkout', CheckOutController::class);
 Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
 Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
+
+#Guest
+Route::get('/booking', [GuestController::class, 'index']);
+Route::post('/booking', [GuestController::class, 'store']);
 
 #HRD
 Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
