@@ -26,4 +26,15 @@ class RoomController extends Controller
 
         return redirect()->route('room.index');
     }
+
+    public function report_page(){
+        $reported = DB::table('reports')
+                ->join('rooms', 'reports.id_room', '=', 'rooms.id_room')
+                ->select('rooms.id_room','reports.id_report', 'rooms.room_number', 'reports.description', 'rooms.status')
+                ->where('status', 'problem')
+                ->get();
+
+        return view('RoomService.reportpage', compact('reported'));
+    }
+
 }

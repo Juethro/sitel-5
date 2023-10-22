@@ -9,7 +9,7 @@
 
     <title>Room Service</title>
 </head>
-<body class =" bg-[#EFE7E7]">
+<body class =" bg-white">
     @include('RoomService.navbar')
 
     <div>

@@ -52,10 +52,11 @@ Route::middleware(['auth', 'only-hrd'])->group(function(){
 
 #Room Service / House Keeper
 Route::middleware(['auth', 'only-roomservice'])->group(function() {
-    Route::get('/rooms/reports' , [ReportController::class, 'showForm'])->name('room.report');
-    Route::post('/rooms/reports' , [ReportController::class, 'submitReport'])->name('submit.form');
+    Route::get('/rooms/reports/{id}' , [ReportController::class, 'showForm'])->name('room.report');
+    Route::post('/rooms/reports/{id}' , [ReportController::class, 'submitReport'])->name('submit.form');
     Route::get('/rooms', [RoomController::class, 'index'])->name('room.index');
-    Route::get('/rooms/{id}', [RoomController::class, 'update_status'])->name('room.update');
+    Route::post('/rooms/{id}', [RoomController::class, 'update_status'])->name('room.update');
+    Route::get('/rooms/reported', [RoomController::class, 'report_page'])->name('room.reported');
 });
 
 #Login System

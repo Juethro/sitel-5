@@ -1,9 +1,10 @@
 @extends('RoomService.app')
 
 @section('body')
+
     <div class="flex-col justify-center items-center">
         <div class="mt-2 mb-5 mx-[10vw]">
-            <h1 class="text-2xl font-bold">Housekeeper</h1>
+            <h1 class="text-2xl font-bold">Room Service</h1>
         </div>
         <hr />
         @if (Session::has('success'))
@@ -16,25 +17,24 @@
                 <thead class="items-center">
                     <tr >
                         <th class="p-5 border border-slate-300">#</th>
-                        <th class="p-5 border border-slate-300">ID Kamar</th>
-                        <th class="p-5 border border-slate-300 w-[10em]">Nomor Kamar</th>
-                        <th class="p-5 border border-slate-300 w-[8em]">Status</th>
-                        <th class="p-5 border border-slate-300 w-[12em] py-4">Action</th>
+                        <th class="p-5 border border-slate-300">ID Report</th>
+                        <th class="p-5 border border-slate-300">Nomor Kamar</th>
+                        <th class="p-5 border border-slate-300 w-[32em]">Deskripsi</th>
+                        <th class="p-5 border border-slate-300">Status</th>
+                        <th class="p-5 border border-slate-300 w-40 py-4">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if($data->count() > 0)
-                        @foreach ($data as $key => $eachData)
+                    @if($reported->count() > 0)
+                        @foreach ($reported as $key => $eachData)
                             <tr class="{{ $key% 2 === 0 ? 'bg-pink-100' : 'bg-white' }} h-[3em]">
                                 <td class="text-center align-middle border border-slate-300">{{ $key + 1 }}</td>
-                                <td class="text-center align-middle border border-slate-300 ">{{ $eachData->id_booking }}</td>
+                                <td class="text-center align-middle border border-slate-300 ">{{ $eachData->id_report }}</td>
                                 <td class="text-center align-middle border border-slate-300">{{ $eachData->room_number }}</td>
+                                <td class="text-center align-middle border border-slate-300">{{ $eachData->description }}</td>
                                 <td class="text-center align-middle border border-slate-300">{{ $eachData->status }}</td>
-                                <td class="text-center align-middle border border-slate-300 ">
-                                    <div class="flex justify-around">
-                                        <a href="{{ route('room.update', ['id' => $eachData->id_room]) }}" class="btn btn-primary rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Ready</a>
-                                    <a href="{{ route('room.report', ['id' => $eachData->id_room]) }}" class="btn btn-primary rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Report</a>
-                                    </div>
+                                <td class="text-center align-middle border border-slate-300">
+                                    <a href="{{ route('room.update', ['id' => $eachData->id_room]) }}" class="btn btn-primary rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Ready</a>                                   
                                 </td>
                             </tr>
                         @endforeach
@@ -46,7 +46,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
-  
+    
 @endsection

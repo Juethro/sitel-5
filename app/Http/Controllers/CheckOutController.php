@@ -20,7 +20,6 @@ class CheckOutController extends Controller
             ->get();
         return view('receptionist.checkOut', compact('checkouttable'));
     }
-
     
     public function checkOutRoom($roomId)
     {

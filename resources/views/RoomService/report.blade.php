@@ -10,7 +10,8 @@
                 @if ($message = Session::get('message'))
                     <p>{{ $message }}</p>
                 @endif
-                <form action="{{route('submit.form')}}" method="POST" >
+
+                <form action="{{route('submit.form', $id)}}" method="POST" >
                     @csrf
                     <div class="ml-[55px] mt-7">
                         <label for="description">Deskripsi Keluhan:</label><br>
