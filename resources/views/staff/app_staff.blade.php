@@ -6,11 +6,11 @@
     @vite('resources/css/app.css')
 
     <title>Sitel5</title>
-      </head>
+  </head>
   <body>
     @include('staff.navbar')
  
-    <div class="container py-5">
+    <div class="">
         @yield('body')
     </div>
  

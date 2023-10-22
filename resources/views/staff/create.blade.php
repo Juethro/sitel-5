@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('staff.app_staff')
 
 @section('body')
     <h1 class="mb-0">Staff Baru</h1>

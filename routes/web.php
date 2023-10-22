@@ -34,7 +34,7 @@ Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->nam
 Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
 
 #Guest
-Route::get('/booking', [GuestController::class, 'index']);
+Route::get('/booking/{id}', [GuestController::class, 'index']);
 Route::post('/booking', [GuestController::class, 'store']);
 
 #HRD
