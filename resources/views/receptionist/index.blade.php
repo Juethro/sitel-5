@@ -8,7 +8,7 @@
 @section('body')
 
     {{-- Form Tanggal --}}
-    <form action="{{ route('roomAvailable') }}" method="post">
+    <form action="{{ route('receptionist.roomAvailable') }}" method="post">
         @csrf
         <label for="start_date">Tanggal Awal:</label>
         <input type="date" id="start_date" name="start_date" required><br>
@@ -21,9 +21,9 @@
 
     {{-- Pilih Roomtype --}}
     <div>
-        <button>Pokoke Turu</button>
-        <button>Rodok Deluxe</button>
-        <button>Super Deluxe</button>
+        <button id="pokoke-turu" onclick="roomGroupBy(3)">Pokoke Turu</button>
+        <button id="rodok-deluxe" onclick="roomGroupBy(2)">Rodok Deluxe</button>
+        <button id="super-deluxe" onclick="roomGroupBy(1)">Super Deluxe</button>
     </div>
 
 
@@ -40,32 +40,38 @@
         </thead>
         <tbody>
             <tr>
-                <td class="id-kamar">id</td>
-                <td class="nomer-kamar">nomer kamar</td>
-                <td class="tipe-kamar">tipe kamar</td>
-                <td class="status-kamar">status kamar</td>
-                <td class="tombol-pilih">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button href="#" type="button" class="btn btn-secondary">Pilih</button>
-                    </div>
-                </td>
+                <td>No Data</td>
             </tr>
         </tbody>
     </table>
 
     {{-- Script --}}
     <script>
-        var availableRooms = @json($availableRooms);
 
-        var tableBody = $('tbody');
-        tableBody.empty();
+        function roomGroupBy(idRoomType){
+            var availableRooms = JSON.parse(@json($availableRooms));
 
-        availableRooms.forEach(
-            function(room) {
+            var tableBody = $('tbody');
+            tableBody.empty();
+
+            var filteredRooms = availableRooms.filter(function (room) {
+                return room.id_roomtype === idRoomType;
+            });
+
+            var roomTypeName = "";
+            if (idRoomType == 1) {
+                roomTypeName = "Super Deluxe"
+            } else if (idRoomType == 2) {
+                roomTypeName = "Rodok Deluxe"
+            } else {
+                roomTypeName = "Pokoke Turu"
+            }
+
+            filteredRooms.forEach( function(room) {
                 var row = '<tr>' +
                     '<td class="align-middle">' + room.id_room + '</td>' +
                     '<td class="align-middle">' + room.room_number + '</td>' +
-                    '<td class="align-middle">' + room.roomtype + '</td>' +
+                    '<td class="align-middle">' + roomTypeName + '</td>' +
                     '<td class="align-middle">' + room.status + '</td>' +
                     '<td class="align-middle">' +
                     '<div class="btn-group" role="group" aria-label="Basic example">' +
@@ -75,8 +81,8 @@
                     '</tr>';
 
                 tableBody.append(row);
-            }
-        );
+            });
+        };
 
     </script>
 

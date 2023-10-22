@@ -18,7 +18,7 @@ class CheckInController extends Controller
             ->join('roomtypes', 'roomtypes.id_roomtype', '=', 'rooms.id_roomtype')
             ->where('rooms.status', '=', 'booked')
             ->get();
-        return view('CheckIn.index', compact('bookings'));
+        return view('receptionist.checkIn', compact('bookings'));
     }
 
     public function checkInRoom($roomId)
@@ -37,6 +37,6 @@ class CheckInController extends Controller
             ->where('rooms.status', '=', 'booked')
             ->get();
 
-        return view('CheckIn.index', compact('bookings'))->with('success', 'Room checked in successfully');
+        return view('receptionist.checkIn', compact('bookings'))->with('success', 'Room checked in successfully');
     }
 }

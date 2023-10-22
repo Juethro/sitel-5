@@ -1,7 +1,5 @@
 <?php
 
-// File: StaffController.php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;

@@ -18,7 +18,7 @@ class CheckOutController extends Controller
             ->join('roomtypes', 'roomtypes.id_roomtype', '=', 'rooms.id_roomtype')
             ->where('rooms.status', '=', 'checkined')
             ->get();
-        return view('CheckOut.index', compact('checkouttable'));
+        return view('receptionist.checkOut', compact('checkouttable'));
     }
 
     
@@ -36,6 +36,6 @@ class CheckOutController extends Controller
             ->where('rooms.status', '=', 'checkined')
             ->get();
 
-        return view('CheckOut.index', compact('checkouttable'))->with('success', 'Room checked out successfully');
+        return view('receptionist.checkOut', compact('checkouttable'))->with('success', 'Room checked out successfully');
     }
 }

@@ -24,8 +24,9 @@ Route::get('/', function () {
 });
 
 #Receptionist
-Route::get('/booking', [BookingController::class, 'showBookingForm'])->name('receptionist.index');
-Route::post('/booking/check-availability', [BookingController::class, 'roomAvailable'])->name('roomAvailable');
+Route::get('/receptionist', [BookingController::class, 'showRecepDash'])->name('receptionist.index');
+Route::post('/receptionist/check-availability', [BookingController::class, 'roomAvailable'])->name('receptionist.roomAvailable');
+Route::post('/booking/{roomId}', [BookingController::class, 'showBookingForm'])->name('receptionist.booking');
 Route::resource('/checkin', CheckInController::class);
 Route::resource('/checkout', CheckOutController::class);
 Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
