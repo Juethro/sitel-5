@@ -30,7 +30,7 @@
                             <a href="{{ route('room.update', ['id' => $eachData->id_room]) }}" class="btn btn-primary">Ready</a>
                         </td>
                         <td class="align-middle">
-                            <a href="{{ route('show.form', ['roomId' => $eachData->id_room]) }}" class="btn btn-primary">Report</a>
+                            <a href="{{ route('room.report', ['roomId' => $eachData->id_room]) }}" class="btn btn-primary">Report</a>
                         </td>
                         </tr>
                 @endforeach
