@@ -1,11 +1,17 @@
 @extends('staff.app_staff')
 
 @section('body')
-    <div class="flex flex-col items-center justify-center space-y-4">
-        <div class="bg-white inline-block rounded text-center w-72 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl" style="box-shadow: 0 4px 0px rgba(220, 66, 149, 1)">
-            <h1>List Staff</h1></div>
-        <div class="w-31 h-6 grid bg-[#DC4295] inline-block rounded text-center text-white text-sm mb-4"><a href="{{ route('staff.create') }}">+ Tambah Staff</a></div>
+    <div class="flex flex-col items-center justify-center space-y-4 mt-8 font-montserrat">
+        <div class="bg-white inline-block rounded font-bold text-center w-72 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl" style="box-shadow: 0 4px 0px rgba(220, 66, 149, 1)">
+            <h1>List Staff</h1>
+        </div>
     </div>
+    <div class="flex justify-end">
+        <div class="w-32 h-6 grid bg-[#DC4295] inline-block rounded text-center text-white text-sm mb-4">
+            <a href="{{ route('staff.create') }}">+ Tambah Staff</a>
+        </div>
+    </div>
+    
     <hr />
     @if (Session::has('success'))
         <div class="" role="alert">
@@ -36,13 +42,13 @@
                         <td class="py-2 px-4 text-center">{{ $rs->id_department }}</td>
                         <td class="py-2 px-4 text-center">{{ $rs->position }}</td>
                         <td class="py-2 px-4 text-center">
-                            <div class="" role="group" aria-label="Basic example">
-                                    <a href="{{ route('staff.show', $rs->id_staff) }}" type="button" class="">Detail</a>
-                                    <a href="{{ route('staff.edit', $rs->id_staff)}}" type="button" class="">Edit</a>
+                            <div class="flex items-center justify-center space-x-2" role="group" aria-label="Basic example">
+                                    <a href="{{ route('staff.show', $rs->id_staff) }}" type="button" class="bg-[#DC4295] hover:bg-blue-700 text-white py-2 px-4 rounded">Detail</a>
+                                    <a href="{{ route('staff.edit', $rs->id_staff)}}" type="button" class="bg-[#DC4295] hover:bg-blue-700 text-white py-2 px-4 rounded">Edit</a>
                                     <form action="{{ route('staff.destroy', $rs->id_staff) }}" method="POST" type="button" class="" onsubmit="return confirm('Delete?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="">Delete</button>
+                                    <button class="bg-[#DC4295] hover:bg-red-700 text-white py-2 px-4 rounded">Delete</button>
                                 </form>
                             </div>
                         </td>
