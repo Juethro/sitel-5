@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('RoomService.app')
 
 @section('body')
-    <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">List Check-In</h1>
+    <div class="ml-4">
+        <h1 class="">List Check-In</h1>
     </div>
     <hr />
     @if (Session::has('success'))
