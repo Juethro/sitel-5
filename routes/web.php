@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\StaffController;
@@ -21,36 +23,50 @@ use App\Http\Controllers\RoomController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect()->route('login');
+})->name('home')->middleware('auth');
 
 #Receptionist
-Route::get('/receptionist', [BookingController::class, 'showRecepDash'])->name('receptionist.index');
-Route::post('/receptionist/check-availability', [BookingController::class, 'roomAvailable'])->name('receptionist.roomAvailable');
-Route::post('/receptionist/booking/{roomId}', [BookingController::class, 'storeGuest'])->name('receptionist.guest.store');
-Route::resource('/checkin', CheckInController::class);
-Route::resource('/checkout', CheckOutController::class);
-Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
-Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
-
-#Guest
-Route::get('/booking/{id}', [GuestController::class, 'index']);
-Route::post('/booking', [GuestController::class, 'store']);
+Route::middleware(['auth', 'only-recept'])->group(function() {
+    Route::get('/receptionist', [BookingController::class, 'showRecepDash'])->name('receptionist.index');
+    Route::post('/receptionist/check-availability', [BookingController::class, 'roomAvailable'])->name('receptionist.roomAvailable');
+    Route::post('/receptionist/booking/{roomId}', [BookingController::class, 'storeGuest'])->name('receptionist.guest.store');
+    Route::resource('/checkin', CheckInController::class);
+    Route::resource('/checkout', CheckOutController::class);
+    Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
+    Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
+    Route::get('/booking/{id}', [GuestController::class, 'index']);
+    Route::post('/booking', [GuestController::class, 'store']);
+});
 
 #HRD
-Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
-Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
-Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
-Route::get('/staff/{id}/show', [StaffController::class, 'show'])->name('staff.show');
-Route::get('/staff/{id}/edit', [StaffController::class, 'edit'])->name('staff.edit');
-Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff.update');
-Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
+Route::middleware(['auth', 'only-hrd'])->group(function(){
+    Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
+    Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
+    Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+    Route::get('/staff/{id}/show', [StaffController::class, 'show'])->name('staff.show');
+    Route::get('/staff/{id}/edit', [StaffController::class, 'edit'])->name('staff.edit');
+    Route::put('/staff/{id}', [StaffController::class, 'update'])->name('staff.update');
+    Route::delete('/staff/{id}', [StaffController::class, 'destroy'])->name('staff.destroy');
+});
 
 #Room Service / House Keeper
-Route::get('/reports' , [ReportController::class, 'showForm'])->name('room.report');
-Route::post('/reports' , [ReportController::class, 'submitReport'])->name('submit.form');
-Route::get('/rooms', [RoomController::class, 'index'])->name('room.index');
-Route::get('/rooms/{id}', [RoomController::class, 'update_status'])->name('room.update');
+Route::middleware(['auth', 'only-roomservice'])->group(function() {
+    Route::get('/rooms/reports' , [ReportController::class, 'showForm'])->name('room.report');
+    Route::post('/rooms/reports' , [ReportController::class, 'submitReport'])->name('submit.form');
+    Route::get('/rooms', [RoomController::class, 'index'])->name('room.index');
+    Route::get('/rooms/{id}', [RoomController::class, 'update_status'])->name('room.update');
+});
 
-// Route::get('/checkinout', 'CheckInOutController@index');
-//Route::resource('/checkinout', [CheckInOutController::class, 'index']);
+#Login System
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+#Admin
+Route::middleware(['auth', 'only-admin'])->group(function(){
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::post('/admin/addUser', [AdminController::class], 'add')->name('admin.add');
+    Route::post('/admin/deleteUser', [AdminController::class], 'delete')->name('admin.delete');
+});
+
