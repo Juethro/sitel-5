@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RoomsSeeder::class,
             BookingsSeeder::class,
             CheckInOutsSeeder::class,
+            UserSeeder::class,
 
         ]);
         // \App\Models\User::factory(10)->create();
