@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\booking;
+use App\Models\guest;
 use App\Models\room;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,11 @@ class BookingController extends Controller
         $availableRooms = $allRooms->whereNotIn('id', $unavailableRoomIds);
 
         return view('receptionist.index', compact('availableRooms'));
+    }
+
+    public function showBookingForm($roomId)
+    {
+        return view('booking.form', compact('roomId'));
     }
 
 }
