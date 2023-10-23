@@ -32,9 +32,4 @@ class BookingController extends Controller
         return view('receptionist.index', compact('availableRooms'));
     }
 
-    public function showBookingForm($roomId)
-    {
-        return view('booking.form', compact('roomId'));
-    }
-
 }

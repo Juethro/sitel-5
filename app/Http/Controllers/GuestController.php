@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 
 class GuestController extends Controller
 {
-    public function index()
+    public function index(string $id)
     {
+        return view('receptionist.booking', compact('id'));
+    }
+
+    public function show(){
         $guests = Guest::all();
-        return view('receptionist.booking', compact('guests'));
+        return view('receptionist.guest', compact('guests'));
     }
 
     public function create()

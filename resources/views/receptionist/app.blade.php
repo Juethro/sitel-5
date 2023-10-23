@@ -12,7 +12,7 @@
 <body>
     @include('receptionist.navbar')
 
-    <div class="container m-0">
+    <div class="m-0 ">
         @yield('body')
     </div>
 
