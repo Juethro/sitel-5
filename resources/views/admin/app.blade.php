@@ -14,7 +14,6 @@
     <div>
         @yield('body')
     </div>
-    <div>ini admin</div>
 
 </body>
 </html>
