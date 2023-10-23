@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="flex flex-col items-center justify-center space-y-4 mt-8 font-montserrat">
-        <div class="bg-white inline-block rounded font-bold text-center w-72 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl" style="box-shadow: 0 4px 0px rgba(220, 66, 149, 1)">
+        <div class="bg-white inline-block rounded font-bold text-center w-[300px] sm:text-lg md:text-xl lg:text-2xl xl:text-3xl" style="box-shadow: 0 4px 0px rgba(220, 66, 149, 1)">
             <h1>List Staff</h1>
         </div>
     </div>
@@ -18,7 +18,7 @@
             {{Session::get('success')}}
         </div>
     @endif
-    <div class="flex flex-col items-center mt-4">
+    <div class="flex flex-col items-center m-20">
     <table class="mt-4 bg-white shadow-md rounded-lg overflow-hidden w-full">
         <thead>
             <tr>
