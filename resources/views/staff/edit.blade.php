@@ -13,33 +13,33 @@
             @csrf
             @method('PUT')
 
-            <div class="bg-white p-4 rounded shadow-lg">
-                <label class="block text-sm font-medium text-gray-600 mb-1">Nama:</label>
-                <input type="text" name="staff_name" class="mt-2 p-2 border rounded w-full" placeholder="Nama" value="{{ $staff->staff_name }}">
+            <div class="flex">
+                <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">Nama:</label>
+                <input type="text" name="staff_name" class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10" placeholder="Nama" value="{{ $staff->staff_name }}">
             </div>
 
-            <div class="bg-white p-4 rounded shadow-lg">
-                <label class="block text-sm font-medium text-gray-600 mb-1">Alamat:</label>
-                <input type="text" name="staff_address" class="mt-2 p-2 border rounded w-full" placeholder="Alamat" value="{{ $staff->staff_address }}">
+            <div class="flex">
+                <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">Alamat:</label>
+                <input type="text" name="staff_address" class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10" placeholder="Alamat" value="{{ $staff->staff_address }}">
             </div>
 
-            <div class="bg-white p-4 rounded shadow-lg">
-                <label class="block text-sm font-medium text-gray-600 mb-1">No Hp:</label>
-                <input type="text" name="phone_number" class="mt-2 p-2 border rounded w-full" placeholder="No Hp" value="{{ $staff->phone_number }}">
+            <div class="flex">
+                <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">No Hp:</label>
+                <input type="text" name="phone_number" class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10" placeholder="No Hp" value="{{ $staff->phone_number }}">
             </div>
 
-            <div class="bg-white p-4 rounded shadow-lg">
-                <label class="block text-sm font-medium text-gray-600 mb-1">Departemen:</label>
-                <textarea class="mt-2 p-2 border rounded w-full" name="id_department" placeholder="Departemen">{{ $staff->id_department }}</textarea>
+            <div class="flex">
+                <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">Departemen:</label>
+                <input type="text" name="id_department" class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10" placeholder="Departemen" value="{{ $staff->id_department }}">
             </div>
 
-            <div class="bg-white p-4 rounded shadow-lg">
-                <label class="block text-sm font-medium text-gray-600 mb-1">Jabatan:</label>
-                <input type="text" name="position" class="mt-2 p-2 border rounded w-full" placeholder="Jabatan" value="{{ $staff->position }}">
+            <div class="flex">
+                <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">Jabatan:</label>
+                <input type="text" name="position" class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10" placeholder="Jabatan" value="{{ $staff->position }}">
             </div>
 
-            <div class="flex justify-center">
-                <button class="px-6 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-700 focus:outline-none focus:shadow-outline-yellow" type="submit">Update</button>
+            <div class="flex justify-end">
+                <button class="px-6 py-2 bg-[#DC4295] text-white rounded hover:bg-yellow-700 focus:outline-none focus:shadow-outline-yellow" type="submit">Update</button>
             </div>
         </form>
         </div>

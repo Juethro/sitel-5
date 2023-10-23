@@ -8,36 +8,36 @@
         <hr class="w-full mt-4 mb-6">
 
         <div class="max-w-md">
-            <div class="grid grid-cols-2 gap-4">
-                <div class="bg-white p-4 rounded shadow text-center" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <label class="text-sm font-medium text-gray-600">Nama:</label>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="flex">
+                    <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">Nama:</label>
                 </div>
-                <div class="bg-white p-4 rounded shadow" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <span class="text-lg font-semibold">{{ $staff->staff_name }}</span>
+                <div class="">
+                    <span class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10">{{ $staff->staff_name }}</span>
                 </div>
-                <div class="bg-white p-4 rounded shadow text-center" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <label class="text-sm font-medium text-gray-600">Alamat:</label>
+                <div class="flex">
+                    <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">Alamat:</label>
                 </div>
-                <div class="bg-white p-4 rounded shadow" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <span class="text-lg font-semibold">{{ $staff->staff_address }}</span>
+                <div class="">
+                    <span class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10">{{ $staff->staff_address }}</span>
                 </div>
-                <div class="bg-white p-4 rounded shadow text-center" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <label class="text-sm font-medium text-gray-600">No Hp:</label>
+                <div class="flex">
+                    <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">No Hp:</label>
                 </div>
-                <div class="bg-white p-4 rounded shadow" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <span class="text-lg font-semibold">{{ $staff->phone_number }}</span>
+                <div class="">
+                    <span class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10">{{ $staff->phone_number }}</span>
                 </div>
-                <div class="bg-white p-4 rounded shadow text-center" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <label class="text-sm font-medium text-gray-600">Departemen:</label>
+                <div class="flex">
+                    <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">Departemen:</label>
                 </div>
-                <div class="bg-white p-4 rounded shadow" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <span class="text-lg font-semibold">{{ $staff->id_department }}</span>
+                <div class="">
+                    <span class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10">{{ $staff->id_department }}</span>
                 </div>
-                <div class="bg-white p-4 rounded shadow text-center" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <label class="text-sm font-medium text-gray-600">Jabatan:</label>
+                <div class="flex">
+                    <label class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-40 h-10 text-center">Jabatan:</label>
                 </div>
-                <div class="bg-white p-4 rounded shadow" style="box-shadow: 1 10px 10px rgb(0, 0, 0)">
-                    <span class="text-lg font-semibold">{{ $staff->position }}</span>
+                <div class="">
+                    <span class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10">{{ $staff->position }}</span>
                 </div>
             </div>
         </div>
