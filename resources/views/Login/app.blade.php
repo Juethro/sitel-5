@@ -9,26 +9,25 @@
     <title>Login</title>
 </head>
 <body>
-    <div>
-        <div>
-            <form action='/login' method="post">
-                @csrf
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required><br>
-            
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br>
-                
-        
-                <button type="submit">Login</button>
-            </form>
-        </div>
-        <div>
-            @if(Session::has('message'))
-                <p class="alert">{{ Session::get('message') }}</p>
-            @endif
+    <div class="bg-[url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fhotel-wallpaper&psig=AOvVaw2XKqa8WL_HSXtWI21Gdait&ust=1698072568964000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNj6167ziYIDFQAAAAAdAAAAABAE')]">
+        <div class="flex justify-center h-screen items-center">
+            <div class="bg-white w-[250px] rounded-[12px] drop-shadow-md h-[41vh]">
+                <div class="text-[#DC4295] text-2xl font-semibold flex justify-center mt-[20px]">WELCOME</div><br><br>
+                <form class="mx-[20px]" action="/login" method="post">
+                    @csrf
+                    <input placeholder="Username" type="text" id="username" name="username" required class="border-b border-[#DC4295]"><br><br>
+                    <input placeholder="Password" type="password" id="password" name="password" required class="border-b border-[#DC4295]"><br><br><br>
+                    <div class="flex justify-center">
+                        <button type="submit" class="w-[100px] btn btn-primary rounded-[8px] bg-[#DC4295] p-2 ps-2 text-white">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                @if(Session::has('message'))
+                    <p class="alert">{{ Session::get('message') }}</p>
+                @endif
+            </div>
         </div>
     </div>
-    
 </body>
 </html>
