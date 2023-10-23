@@ -12,7 +12,7 @@
     </div>
     
     <div class="flex justify-center">
-        <form class="rounded " action="{{ route('booking.add', $id) }}" method="post">
+        <form class="rounded " action="{{ route('booking.add', ['id' => $id, 'startDate' => $startDate,'endDate' => $endDate]) }}" method="post">
             @csrf
             <table class="mb-4">
                 <tr class="h-10">
@@ -36,10 +36,4 @@
             </div>
         </form>    
     </div>
-
-    {{-- <h2>Daftar Tamu</h2>
-    @foreach($guests as $guest)
-        <p>Nama: {{ $guest->guest_name }} - Telepon: {{ $guest->guest_phone }} - Alamat: {{ $guest->guest_address }}</p>
-    @endforeach --}}
-
 @endsection

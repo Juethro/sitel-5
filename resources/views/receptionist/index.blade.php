@@ -118,6 +118,23 @@
 
         function roomGroupBy(idRoomType){
             var availableRooms = JSON.parse(@json($availableRooms));
+            var start_date;
+            var end_date;
+
+            @if(isset($start_date))
+                start_date = {!! json_encode($start_date) !!};
+            @else
+                start_date = null;
+            @endif
+
+            @if(isset($end_date))
+                end_date = {!! json_encode($end_date) !!};
+            @else
+                end_date = null;
+            @endif
+
+
+            console.log(start_date, end_date);
             var tableBody = $('tbody');
             tableBody.empty();
 
@@ -146,7 +163,7 @@
                         '<td class="text-center align-middle border border-slate-300">' + room.status + '</td>' +
                         '<td class="align-middle">' +
                         '<div class="text-center align-middle border border-slate-300">' +
-                        '<a href="/booking/' + idd + '" class="btn btn-primary rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Pilih</a>' +
+                        '<a href="/booking/' + idd + '/' + start_date + '/' + end_date + '" class="btn btn-primary rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Pilih</a>' +
                         '</div>' +
                         '</td>' +
                         '</tr>';
