@@ -9,7 +9,7 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="bg-[url('C:\Users\Kridha\Downloads\sitel-5\public\images\bg.jpg')]">
+<div class="bg-cover bg-center h-screen" style="background-image: url('/images/bg.jpg');">
         <div class="flex justify-center h-screen items-center">
             <div class="bg-white w-[250px] rounded-[12px] drop-shadow-md h-[41vh]">
                 <div class="text-[#DC4295] text-2xl font-semibold flex justify-center mt-[20px]">WELCOME</div><br><br>
