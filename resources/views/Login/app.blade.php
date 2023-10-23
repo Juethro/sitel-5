@@ -9,7 +9,7 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="bg-[url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fhotel-wallpaper&psig=AOvVaw2XKqa8WL_HSXtWI21Gdait&ust=1698072568964000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNj6167ziYIDFQAAAAAdAAAAABAE')]">
+    <div class="bg-[url('C:\Users\Kridha\Downloads\sitel-5\public\images\bg.jpg')]">
         <div class="flex justify-center h-screen items-center">
             <div class="bg-white w-[250px] rounded-[12px] drop-shadow-md h-[41vh]">
                 <div class="text-[#DC4295] text-2xl font-semibold flex justify-center mt-[20px]">WELCOME</div><br><br>
