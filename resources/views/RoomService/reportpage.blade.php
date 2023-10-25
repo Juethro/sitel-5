@@ -1,11 +1,14 @@
 @extends('RoomService.app')
 
 @section('body')
-
-    <div class="flex-col justify-center items-center">
-        <div class="mt-2 mb-5 mx-[10vw]">
-            <h1 class="text-2xl font-bold">Room Service</h1>
+    <div class="flex flex-col items-center justify-center space-y-4 my-8 font-montserrat">
+        <div style="box-shadow: 0 7px 10px rgba(0, 0, 0, 0.5)">
+            <div class="bg-white inline-block rounded font-bold text-center w-[22em] " style="box-shadow: 0 6px 0px rgba(220, 66, 149, 1)">
+                <h1 class="text-[28px]">Room Service</h1>
+            </div>
         </div>
+    </div>
+    <div class="flex-col justify-center items-center">
         <hr />
         @if (Session::has('success'))
             <div class="alert alert-success" role="alert">
