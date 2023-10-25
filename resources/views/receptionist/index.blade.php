@@ -7,75 +7,84 @@
 @endphp
 
 @section('body')
-    <div class="mt-[3em] mx-[6em]">
-        {{-- Form Tanggal --}}
-        <form class="flex" action="{{ route('receptionist.roomAvailable') }}" method="post">
-            @csrf
-            <div class="flex flex-col mr-4">
-                <label for="start_date">Tanggal Awal:</label>
-                <input type="date" id="start_date" name="start_date" required>
-            </div>
-            
-            <div class="flex flex-col">
-                <label for="end_date">Tanggal Akhir:</label>
-                <input type="date" id="end_date" name="end_date" required><br>
-            </div>
+    <div class="mt-[2em] mx-[6em]">
+        <div class="flex flex-col justify-center">
+            {{-- Form Tanggal --}}
+            <form class="flex items-end" action="{{ route('receptionist.roomAvailable') }}" method="post">
+                @csrf
+                <div class="flex flex-col mr-4">
+                    <label for="start_date">Tanggal Awal:</label>
+                    <div style="box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5)">
+                        <input type="date" id="start_date" name="start_date" class="px-2" style="box-shadow: 0 4px 0px rgba(220, 66, 149, 1)" required>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col">
+                    <label for="end_date">Tanggal Akhir:</label>
+                    <div style="box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5)">
+                        <input type="date" id="end_date" name="end_date" class="px-2" style="box-shadow: 0 4px 0px rgba(220, 66, 149, 1)" required><br>
+                    </div>
+                </div>
 
-            <button class="ml-10" type="submit">Cari Kamar Tersedia</button>
-        </form>
+                <div class="ml-5 relative">
+                    <button type="submit" class="rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Cari Kamar</button>
+                </div>
+            </form>
 
-        {{-- Pilih Roomtype --}}
-        <div class="flex mb-3">
-            <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="pokoke-turu" onclick="roomGroupBy(3)">
-                <div class="flex p-2 w-[11.5em]">
-                    <div class="mr-3">
-                        <img src="{{ asset('images/image 5.svg') }}" alt="">
-                    </div>
-                    <div class="flex flex-col justify-center">
-                        <div class="font-black text-xl text-center" id="data_PokokeTuru">
-                            0
+            {{-- Pilih Roomtype --}}
+            <div class="flex mb-3 mt-5">
+                <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="pokoke-turu" onclick="roomGroupBy(3)">
+                    <div class="flex p-2 w-[11.5em]">
+                        <div class="mr-3">
+                            <img src="{{ asset('images/image 5.svg') }}" alt="">
                         </div>
-                        <div class="text-l text-center">
-                            Pokoke Turu
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="rodok-deluxe" onclick="roomGroupBy(2)">
-                <div class="flex p-2 w-[11.5em]">
-                    <div class="mr-3">
-                        <img src="{{ asset('images/image 5.svg') }}" alt="">
-                    </div>
-                    <div class="flex-col">
-                        <div class="font-black text-xl text-center" id="data_RodokDeluxe">
-                            0
-                        </div>
-                        <div class="text-l text-center">
-                            Rodok Deluxe
+                        <div class="flex flex-col justify-center">
+                            <div class="font-black text-xl text-center" id="data_PokokeTuru">
+                                0
+                            </div>
+                            <div class="text-l text-center">
+                                Pokoke Turu
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="super-deluxe" onclick="roomGroupBy(1)">
-                <div class="flex p-2 w-[11.5em]">
-                    <div class="mr-3">
-                        <img src="{{ asset('images/image 5.svg') }}" alt="">
-                    </div>
-                    <div class="flex-col">
-                        <div class="font-black text-xl text-center" id="data_SuperDeluxe">
-                            0
+                </a>
+                <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="rodok-deluxe" onclick="roomGroupBy(2)">
+                    <div class="flex p-2 w-[11.5em]">
+                        <div class="mr-3">
+                            <img src="{{ asset('images/image 5.svg') }}" alt="">
                         </div>
-                        <div class="text-l text-center">
-                            Super Deluxe
+                        <div class="flex-col">
+                            <div class="font-black text-xl text-center" id="data_RodokDeluxe">
+                                0
+                            </div>
+                            <div class="text-l text-center">
+                                Rodok Deluxe
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
+                <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="super-deluxe" onclick="roomGroupBy(1)">
+                    <div class="flex p-2 w-[11.5em]">
+                        <div class="mr-3">
+                            <img src="{{ asset('images/image 5.svg') }}" alt="">
+                        </div>
+                        <div class="flex-col">
+                            <div class="font-black text-xl text-center" id="data_SuperDeluxe">
+                                0
+                            </div>
+                            <div class="text-l text-center">
+                                Super Deluxe
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
+        
 
         {{-- Tabel Kamar Tersedia --}}
         <div class="flex justify-center mt-[2em]">
-            <table class="table-auto border-collapse shadow-md rounded-lg">
+            <table class="table-auto border-collapse w-full shadow-md rounded-lg">
                 <thead class="items-center">
                     <tr>
                         <th class="px-5 py-3 border border-slate-300">#</th>
@@ -163,7 +172,7 @@
                         '<td class="text-center align-middle border border-slate-300">' + room.status + '</td>' +
                         '<td class="align-middle">' +
                         '<div class="text-center align-middle border border-slate-300">' +
-                        '<a href="/booking/' + idd + '/' + start_date + '/' + end_date + '" class="btn btn-primary rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Pilih</a>' +
+                        '<a href="/booking/' + idd + '/' + start_date + '/' + end_date + '" class="rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Pilih</a>' +
                         '</div>' +
                         '</td>' +
                         '</tr>';
