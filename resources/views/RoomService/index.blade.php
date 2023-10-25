@@ -38,8 +38,14 @@
                             <td class="text-center align-middle border border-slate-300">{{ $eachData->status }}</td>
                             <td class="text-center align-middle border border-slate-300">
                                 <div class="flex justify-around">
-                                    <a href="{{ route('room.update', ['id' => $eachData->id_room]) }}" class="rounded-[12px] bg-[#DC4295] text-white hover:text-black py-1 px-4">Ready</a>
-                                    <a href="{{ route('room.report', ['id' => $eachData->id_room]) }}" class="rounded-[12px] bg-[#DC4295] text-white hover:text-black py-1 px-4">Report</a>
+                                    <form method="POST" action="{{ route('room.update', ['id' => $eachData->id_room]) }}">
+                                        @csrf
+                                        <button type="submit" class="rounded-[12px] bg-[#DC4295] text-white hover:text-black py-1 px-4">Ready</button>
+                                    </form>
+                                    <form method="POST" action="{{ route('room.report', ['id' => $eachData->id_room]) }}">
+                                        @csrf
+                                        <button type="submit" class="rounded-[12px] bg-[#DC4295] text-white hover:text-black py-1 px-4">Report</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

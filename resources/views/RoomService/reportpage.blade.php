@@ -37,7 +37,10 @@
                                 <td class="text-center align-middle border border-slate-300">{{ $eachData->description }}</td>
                                 <td class="text-center align-middle border border-slate-300">{{ $eachData->status }}</td>
                                 <td class="text-center align-middle border border-slate-300">
-                                    <a href="{{ route('room.update', ['id' => $eachData->id_room]) }}" class="btn btn-primary rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Ready</a>                                   
+                                    <form action="{{ route('room.update', ['id' => $eachData->id_room]) }} " method="POST">
+                                        @csrf
+                                        <button type="submit" class="rounded-[8px] bg-[#DC4295] text-white hover:text-black py-1 px-4">Ready</button>
+                                    </form>                              
                                 </td>
                             </tr>
                         @endforeach
