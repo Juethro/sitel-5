@@ -1,33 +1,33 @@
 @extends('admin.app')
 
 @section('body')
-<div class="flex justify-center mt-12">
-  <div class=" bg-600 p-10">
+<div class="flex justify-center">
+  <div class=" bg-600 p-20">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16" >
-        <button class="p-7 flex text-3xl font-bold items-center bg-white h-15 rounded-lg shadow-2xl">
+        <a  href="{{ route('admin.viewUsers')}}" class="p-4 flex text-sm font-bold items-center bg-white h-20 rounded-[20px] shadow-[0px_10px_8px_-2px_rgba(0,0,0,0.6)] justify-center">
             <img src="images/view_user.png" class="w-10 mr-6">
-            <p>View User</p>
-        </button>
-        <button class="p-7 flex text-3xl font-bold items-center bg-white h-15 rounded-lg shadow-2xl">
+            <p>View All Users Account</p>
+        </a>
+        <a href="{{ route('admin.viewStaff')}}" class="p-4 flex text-sm font-bold items-center bg-white h-20 rounded-[20px] shadow-[0px_10px_8px_-2px_rgba(0,0,0,0.6)] justify-center">
             <img src="images/view_staff.png" class="w-10 mr-6">
-            <p>View Staff</p>
-        </button>
-        <button class="p-7 flex text-3xl font-bold items-center bg-white h-15 rounded-lg shadow-2xl">
+            <p>View All Hotel Staff's</p>
+        </a>
+        <a href="{{ route('admin.viewRooms')}}" class="p-4 flex text-sm font-bold items-center bg-white h-20 rounded-[20px] shadow-[0px_10px_8px_-2px_rgba(0,0,0,0.6)] justify-center">
             <img src="images/view_room.png" class="w-10 mr-6">
-            <p>View Rooms</p>
-        </button>
-        <button class="p-7 flex text-3xl font-bold items-center bg-white h-15 rounded-lg shadow-2xl">
+            <p>View All Hotel Room's Status</p>
+        </a>
+        <a href="{{ route('admin.viewCheckIn')}}" class="p-4 flex text-sm font-bold items-center bg-white h-20 rounded-[20px] shadow-[0px_10px_8px_-2px_rgba(0,0,0,0.6)] justify-center">
             <img src="images/view_ci.png" class="w-10 mr-6">
-            <p>View Check-In</p>
-        </button>
-        <button class="p-7 flex text-3xl font-bold items-center bg-white h-15 rounded-lg shadow-2xl">
+            <p>View All Check-In Log</p>
+        </a>
+        <a href="{{ route('admin.viewCheckOut')}}" class="p-4 flex text-sm font-bold items-center bg-white h-20 rounded-[20px] shadow-[0px_10px_8px_-2px_rgba(0,0,0,0.6)] justify-center">
             <img src="images/view_co.png" class="w-10 mr-6">
-            <p>View Check-Out</p>
-        </button>
-        <button class="p-7 flex text-3xl font-bold items-center bg-white h-15 rounded-lg shadow-2xl">
+            <p>View All Check-Out Log</p>
+        </a>
+        <a href="{{ route('admin.HK')}}" class="p-4 flex text-sm font-bold items-center bg-white h-20 rounded-[20px] shadow-[0px_10px_8px_-2px_rgba(0,0,0,0.6)] justify-center">
             <img src="images/view_hk.png" class="w-10 mr-6">
-            <p>View Housekeeper</p>
-        </button>
+            <p>View Housekeeper's </p>
+        </a>
     </div>
   </div>
 </div>

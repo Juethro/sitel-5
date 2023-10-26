@@ -70,5 +70,11 @@ Route::middleware(['auth', 'only-admin'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::post('/admin/addUser', [AdminController::class], 'add')->name('admin.add');
     Route::post('/admin/deleteUser', [AdminController::class], 'delete')->name('admin.delete');
+    Route::get('/admin/viewStaff', [AdminController::class, 'viewStaff'])->name('admin.viewStaff');
+    Route::get('/admin/viewRooms', [AdminController::class, 'viewRooms'])->name('admin.viewRooms');
+    Route::get('/admin/viewUsers', [AdminController::class, 'viewUsers'])->name('admin.viewUsers');
+    Route::get('/admin/HK', [AdminController::class, 'HK'])->name('admin.HK');
+    Route::get('/admin/viewCheckIn', [AdminController::class, 'viewCheckIn'])->name('admin.viewCheckIn');
+    Route::get('/admin/viewCheckOut', [AdminController::class, 'viewCheckOut'])->name('admin.viewCheckOut');
 });
 

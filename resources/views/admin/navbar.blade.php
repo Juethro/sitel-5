@@ -2,7 +2,7 @@
 
     <!-- Kotak Navigasi -->
     <div class="ml-3 p-4 flex items-center" >
-        <img class="w-10 h-10 object-cover rounded-full" src="images/profil_default.png">
+        <img class="w-10 h-10 object-cover rounded-full" src="/images/profil_default.png">
         <h3 class="text-sm font-medium ml-3">Admin</h3>  
     </div>
 
