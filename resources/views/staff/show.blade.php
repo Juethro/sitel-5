@@ -39,6 +39,9 @@
                 <div class="">
                     <span class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10">{{ $staff->position }}</span>
                 </div>
+                <div class="justify-end mt-4">
+                    <a href="{{ route('staff.index') }}" class="bg-[#DC4295] hover:bg-pink-700 text-white py-1 px-5 rounded mr-2">Back</a>
+                </div>
             </div>
         </div>
     </div>

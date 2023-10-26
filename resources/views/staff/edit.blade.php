@@ -38,8 +38,9 @@
                 <input type="text" name="position" class="bg-white p-3 rounded shadow-lg block text-sm font-medium text-gray-600 mb-1 mr-6 w-80 h-10" placeholder="Jabatan" value="{{ $staff->position }}">
             </div>
 
-            <div class="flex justify-end">
-                <button class="px-6 py-2 bg-[#DC4295] text-white rounded hover:bg-yellow-700 focus:outline-none focus:shadow-outline-yellow" type="submit">Update</button>
+            <div class="flex justify-end mt-4">
+                <a href="{{ route('staff.index') }}" class="bg-[#DC4295] hover:bg-pink-700 text-white py-1 px-5 rounded mr-2">Back</a>
+                <button class="bg-[#DC4295] hover:bg-pink-700 text-white py-1 px-2 rounded" type="submit">Update</button>
             </div>
         </form>
         </div>

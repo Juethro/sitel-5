@@ -38,7 +38,8 @@
             </div>
 
             <div class="flex justify-end">
-                <button class="px-6 py-2 bg-[#DC4295] text-white rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue" type="submit">Submit</button>
+                <a href="{{ route('staff.index') }}" class="bg-[#DC4295] hover:bg-pink-700 text-white py-1 px-5 rounded mr-2">Back</a>
+                <button class="bg-[#DC4295] hover:bg-pink-700 text-white py-1 px-2 rounded" type="submit">Submit</button>
             </div>
         </form>
     </div>
