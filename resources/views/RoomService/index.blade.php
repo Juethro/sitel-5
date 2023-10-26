@@ -42,7 +42,7 @@
                                         @csrf
                                         <button type="submit" class="rounded-[12px] bg-[#DC4295] text-white hover:text-black py-1 px-4">Ready</button>
                                     </form>
-                                    <form method="POST" action="{{ route('room.report', ['id' => $eachData->id_room]) }}">
+                                    <form method="GET" action="{{ route('room.report', ['id' => $eachData->id_room]) }}">
                                         @csrf
                                         <button type="submit" class="rounded-[12px] bg-[#DC4295] text-white hover:text-black py-1 px-4">Report</button>
                                     </form>
