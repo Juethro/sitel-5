@@ -16,8 +16,25 @@ class CheckInController extends Controller
             ->join('guests', 'guests.id_guest', '=', 'bookings.id_guest')
             ->join('rooms', 'rooms.id_room', '=', 'bookings.id_room')
             ->join('roomtypes', 'roomtypes.id_roomtype', '=', 'rooms.id_roomtype')
-            ->where('rooms.status', '=', 'booked')
+            ->where('rooms.status', '=', 'x')
             ->get();
+        return view('receptionist.checkIn', compact('bookings'));
+    }
+
+    public function todaycheckin(Request $request)
+    {
+        $todaydate = $request->input('today_date');
+
+        $bookings = DB::table('bookings')
+            ->select('bookings.id_booking','bookings.booking_date','bookings.total_pay',
+                     'bookings.start_date', 'bookings.finish_date', 'rooms.id_room',
+                     'guests.guest_name','roomtypes.roomtype_name', 'rooms.status')
+            ->join('guests', 'guests.id_guest', '=', 'bookings.id_guest')
+            ->join('rooms', 'rooms.id_room', '=', 'bookings.id_room')
+            ->join('roomtypes', 'roomtypes.id_roomtype', '=', 'rooms.id_roomtype')
+            ->where('bookings.start_date', $todaydate)
+            ->get();
+
         return view('receptionist.checkIn', compact('bookings'));
     }
 
