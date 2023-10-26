@@ -13,11 +13,14 @@
             </div>
         </div>
         <hr />
-        @if (Session::has('success'))
-            <div class="" role="alert">
-                {{Session::get('success')}}
-            </div>
-        @endif
+        <div class="flex justify-center">
+            @if (Session::has('success'))
+                <div class="" role="alert">
+                    {{Session::get('success')}}
+                </div>
+            @endif
+        </div>
+        
         <div class="flex flex-col items-center m-20">
             <table class="mt-4 bg-white shadow-md rounded-lg overflow-hidden w-full">
                 <thead>
@@ -37,8 +40,10 @@
                                 <td class="py-2 px-4 text-center">{{ $rs->role }}</td>
                                 <td class="py-2 px-4 text-center">
                                     <div>
-                                        <form action="" method="post">
-                                            <button></button>
+                                        <form action="{{ Route('admin.delete', $rs->id) }}" type="button" method="post" onsubmit="return confirm('Delete?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="bg-[#DC4295] hover:bg-pink-700 text-white py-1 px-2 rounded" >Delete</button>
                                         </form>
                                     </div>
                                 </td>

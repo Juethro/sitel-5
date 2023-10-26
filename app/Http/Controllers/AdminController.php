@@ -104,4 +104,12 @@ class AdminController extends Controller
 
         return redirect()->route('admin.viewUsers');
     }
+
+    public function destroy(string $id){
+        $user = user::findOrFail($id);
+ 
+        $user->delete();
+ 
+        return redirect()->route('admin.viewUsers')->with('success', 'Account deleted successfully');
+    }
 }

@@ -71,7 +71,7 @@ Route::middleware(['auth', 'only-admin'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/register', [AdminController::class, 'register'])->name('admin.register');
     Route::post('/admin/addUser', [AdminController::class, 'add'])->name('admin.addUser');
-    Route::post('/admin/deleteUser', [AdminController::class], 'delete')->name('admin.delete');
+    Route::delete('/admin/deleteUser/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
     Route::get('/admin/viewStaff', [AdminController::class, 'viewStaff'])->name('admin.viewStaff');
     Route::get('/admin/viewRooms', [AdminController::class, 'viewRooms'])->name('admin.viewRooms');
     Route::get('/admin/viewUsers', [AdminController::class, 'viewUsers'])->name('admin.viewUsers');
