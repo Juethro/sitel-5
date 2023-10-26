@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('room_number');
             $table->unsignedBigInteger('id_roomtype');
             $table->foreign('id_roomtype')->references('id_roomtype')->on('roomtypes');
-            $table->enum('status', array('ready','checkined','checkouted','booked', 'problem'));
+            $table->enum('status', array('ready','checkined','checkouted', 'problem'));
         });
     }
 
