@@ -5,13 +5,27 @@
         <h1 class="bg-white inline-block rounded font-bold text-center w-[300px] sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
         style="box-shadow: 0 4px 0px rgba(220, 66, 149, 1)">List Check-In</h1>
     </div>
-    <hr />
+    <form class="flex items-center mt-12 ml-24" action="{{ route('receptionist.todaycheckin') }}" method="POST">
+                @csrf
+                <div class="flex flex-col mr-4">
+                    <label for="start_date">Tanggal Hari Ini:</label>
+                    <div style="box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5)">
+                        <input type="date" id="today_date" name="today_date" class="px-2" style="box-shadow: 0 4px 0px rgba(220, 66, 149, 1)" required>
+                    </div>
+                </div>
+
+                <div class="ml-3 mt-5 relative">
+                    <button type="submit" class="rounded-[8px] bg-[#DC4295] text-white py-1 px-4">Submit</button>
+                </div>
+            </form>
     @if (Session::has('success'))
         <div class="alert alert-success" role="alert">
             {{Session::get('success')}}
         </div>
     @endif
-    <div class="flex flex-col items-center m-20">
+
+    @if(isset($bookings))
+    <div class="flex flex-col items-center m-20 mt-6">
     <table class="mt-4 bg-white shadow-md rounded-lg overflow-hidden w-full">
         <thead>
             <tr>
@@ -41,11 +55,9 @@
                         </td>
                         </tr>
                 @endforeach
-            @else
-                <tr>
-                    <td class="text-center" colspan="5">Bookings not found</td>
-                </tr>
+
             @endif
+    @endif
         </tbody>
     </table>
     </div>
