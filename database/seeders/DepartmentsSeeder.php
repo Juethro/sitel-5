@@ -14,9 +14,10 @@ class DepartmentsSeeder extends Seeder
     public function run(): void
     {
         DB::table('departments')->insert([
-            ['department_name' => 'Departemen A', 'salary' => 5000],
-            ['department_name' => 'Departemen B', 'salary' => 6000],
-            ['department_name' => 'Departemen C', 'salary' => 5500],
+            ['department_name' => 'manager', 'salary' => 5000],
+            ['department_name' => 'receptionist', 'salary' => 6000],
+            ['department_name' => 'human resources', 'salary' => 5500],
+            ['department_name' => 'house keeper', 'salary' => 5500],
             // Tambahkan data lain sesuai kebutuhan
         ]);
     }
