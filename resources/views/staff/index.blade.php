@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="flex justify-end">
-        <div class="bg-[#DC4295] hover:bg-pink-700 text-white py-1 px-2 rounded mr-4 mb-3">
+        <div class="w-32 h-6 bg-[#DC4295] flex justify-center items-center rounded text-center text-white text-sm mb-4">
             <a href="{{ route('staff.create') }}">+ Tambah Staff</a>
         </div>
     </div>

@@ -69,6 +69,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 #Admin
 Route::middleware(['auth', 'only-admin'])->group(function(){
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/register', [AdminController::class, 'register'])->name('admin.register');
     Route::post('/admin/addUser', [AdminController::class], 'add')->name('admin.add');
     Route::post('/admin/deleteUser', [AdminController::class], 'delete')->name('admin.delete');
     Route::get('/admin/viewStaff', [AdminController::class, 'viewStaff'])->name('admin.viewStaff');

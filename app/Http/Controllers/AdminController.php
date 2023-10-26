@@ -9,6 +9,8 @@ use App\Models\room;
 use App\Models\roomtype;
 use App\Models\user;
 use App\Models\booking;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -85,5 +87,22 @@ class AdminController extends Controller
             ->get();
 
         return view('admin.HK', compact('data'));
+    }
+
+    public function add(Request $request){
+
+        $request = $request->validate([
+            'username' => 'required|unique:users',
+            'passw' => 'required',
+            'role' => 'required'
+        ]);
+
+        $users = new user();
+        $users->username = $request['username'];
+        $users->password = Hash::make($request['password']);
+        $users->role = $request['role'];
+        $users->save();
+
+        return redirect()->route('admin.viewUsers');
     }
 }
