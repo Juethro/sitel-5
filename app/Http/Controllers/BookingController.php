@@ -27,9 +27,11 @@ class BookingController extends Controller
         
         // Kurangi room yang tersedia dengan
         $allRooms = room::all();
-        $availableRooms = $allRooms->whereNotIn('id', $unavailableRoomIds);
+        $availableRooms = $allRooms->whereNotIn('id_room', $unavailableRoomIds);
 
         return view('receptionist.index', compact('availableRooms','start_date', 'end_date'));
+
+        // return $availableRooms;
     }
 
 }

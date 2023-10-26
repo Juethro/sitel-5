@@ -33,32 +33,47 @@
 
             {{-- Pilih Roomtype --}}
             <div class="flex mb-3 mt-5">
-                <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="pokoke-turu" onclick="roomGroupBy(3)">
+                <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="pokoke-turu" onclick="roomGroupBy(4)">
                     <div class="flex p-2 w-[11.5em]">
                         <div class="mr-3">
                             <img src="{{ asset('images/image 5.svg') }}" alt="">
                         </div>
                         <div class="flex flex-col justify-center">
-                            <div class="font-black text-xl text-center" id="data_PokokeTuru">
+                            <div class="font-black text-xl text-center" id="data_PressRoom">
                                 0
                             </div>
                             <div class="text-l text-center">
-                                Pokoke Turu
+                                Press Room
                             </div>
                         </div>
                     </div>
                 </a>
-                <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="rodok-deluxe" onclick="roomGroupBy(2)">
+                <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="rodok-deluxe" onclick="roomGroupBy(3)">
                     <div class="flex p-2 w-[11.5em]">
                         <div class="mr-3">
                             <img src="{{ asset('images/image 5.svg') }}" alt="">
                         </div>
                         <div class="flex-col">
-                            <div class="font-black text-xl text-center" id="data_RodokDeluxe">
+                            <div class="font-black text-xl text-center" id="data_DeluxeRoom">
                                 0
                             </div>
                             <div class="text-l text-center">
-                                Rodok Deluxe
+                                Deluxe Room
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="mr-7 shadow-lg hover:shadow-2xl duration-300" id="super-deluxe" onclick="roomGroupBy(2)">
+                    <div class="flex p-2 w-[11.5em]">
+                        <div class="mr-3">
+                            <img src="{{ asset('images/image 5.svg') }}" alt="">
+                        </div>
+                        <div class="flex-col">
+                            <div class="font-black text-xl text-center" id="data_SuiteRoom">
+                                0
+                            </div>
+                            <div class="text-l text-center">
+                                Suite Room
                             </div>
                         </div>
                     </div>
@@ -69,11 +84,11 @@
                             <img src="{{ asset('images/image 5.svg') }}" alt="">
                         </div>
                         <div class="flex-col">
-                            <div class="font-black text-xl text-center" id="data_SuperDeluxe">
+                            <div class="font-black text-xl text-center" id="data_SingleRoom">
                                 0
                             </div>
                             <div class="text-l text-center">
-                                Super Deluxe
+                                Single Room
                             </div>
                         </div>
                     </div>
@@ -109,24 +124,28 @@
     {{-- Script --}}
     <script>
         document.addEventListener('DOMContentLoaded', function(){
-            var countRooms = JSON.parse(@json($countRooms));
+            /*var countRooms = JSON.parse(@json($availableRooms)); */
+            var countRooms = {!! $countRooms !!};
             
-            var pokokeTuruRooms = countRooms.filter(function (room) {return room.id_roomtype === 3 && room.status === "ready";});
-            var rodokDeluxeRooms = countRooms.filter(function (room) {return room.id_roomtype === 2 && room.status === "ready";});
-            var superDeluxeRooms = countRooms.filter(function (room) {return room.id_roomtype === 1 && room.status === "ready";});
+            var PressRooms = Object.values(countRooms).filter(function (room) {return room.id_roomtype === 4 && room.status === "ready";});    
+            var DeluxeRooms = Object.values(countRooms).filter(function (room) {return room.id_roomtype === 3 && room.status === "ready";});
+            var SuiteRooms = Object.values(countRooms).filter(function (room) {return room.id_roomtype === 2 && room.status === "ready";});
+            var SingleRooms = Object.values(countRooms).filter(function (room) {return room.id_roomtype === 1 && room.status === "ready";});
 
-            var countPokokeTuru = document.getElementById("data_PokokeTuru");
-            var countRodokDeluxe = document.getElementById("data_RodokDeluxe");
-            var countSuperDeluxe = document.getElementById("data_SuperDeluxe");
+            var countPressRooms = document.getElementById("data_PressRoom");
+            var countDeluxeRooms = document.getElementById("data_DeluxeRoom");
+            var countSuiteRooms = document.getElementById("data_SuiteRoom");
+            var countSingleRooms = document.getElementById("data_SingleRoom");
             
-            countPokokeTuru.textContent = pokokeTuruRooms.length || 0;
-            countRodokDeluxe.textContent = rodokDeluxeRooms.length || 0;
-            countSuperDeluxe.textContent = superDeluxeRooms.length || 0;        
+            countPressRooms.textContent = PressRooms.length || 0;
+            countDeluxeRooms.textContent = DeluxeRooms.length || 0;
+            countSuiteRooms.textContent = SuiteRooms.length || 0;        
+            countSingleRooms.textContent = SingleRooms.length || 0;      
             
         });
 
         function roomGroupBy(idRoomType){
-            var availableRooms = JSON.parse(@json($availableRooms));
+            var availableRooms = {!! $availableRooms !!};
             var start_date;
             var end_date;
 
@@ -142,22 +161,22 @@
                 end_date = null;
             @endif
 
-
-            console.log(start_date, end_date);
             var tableBody = $('tbody');
             tableBody.empty();
 
-            var filteredRooms = availableRooms.filter(function (room) {
+            var filteredRooms = Object.values(availableRooms).filter(function (room) {
                 return room.id_roomtype === idRoomType && room.status === "ready";
             });
 
             var roomTypeName = "";
             if (idRoomType == 1) {
-                roomTypeName = "Super Deluxe"
+                roomTypeName = "Single Room"
             } else if (idRoomType == 2) {
-                roomTypeName = "Rodok Deluxe"
+                roomTypeName = "Suite Room"
+            } else if (idRoomType == 3){
+                roomTypeName = "Deluxe Room"
             } else {
-                roomTypeName = "Pokoke Turu"
+                roomTypeName = "Press Room"
             }
 
             filteredRooms.forEach( function(room, index) {
@@ -180,6 +199,7 @@
                 tableBody.append(row);
                 
             });
+            
         }
     </script>
 
