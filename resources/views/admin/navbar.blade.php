@@ -9,7 +9,7 @@
     <!-- Profil User -->
     <div class="mr-3 p-4 gap-5 flex items-center" >
         <div class="bg-white inline-block rounded" style="box-shadow: 0 8px 0px rgba(220, 66, 149, 1)">
-            <a href="#" class="font-bold px-4 py-2">Logout</a>
+            <a href="{{ route('logout')}}" class="font-bold px-4 py-2">Logout</a>
         </div>
     </div>
 

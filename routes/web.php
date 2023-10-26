@@ -34,6 +34,7 @@ Route::middleware(['auth', 'only-recept'])->group(function() {
     Route::resource('/checkin', CheckInController::class);
     Route::resource('/checkout', CheckOutController::class);
     Route::get('/check-in/{roomId}', [CheckInController::class, 'checkInRoom'])->name('check-in-room');
+    Route::post('/checkin', [CheckInController::class, 'todaycheckin'])->name('receptionist.todaycheckin');
     Route::get('/check-out/{roomId}', [CheckOutController::class, 'checkOutRoom'])->name('check-out-room');
     Route::get('/booking/{id}/{startDate}/{endDate}', [GuestController::class, 'index'])->name('booking.index');
     Route::post('/booking/{id}/{startDate}/{endDate}', [GuestController::class, 'store'])->name('booking.add');
