@@ -90,7 +90,6 @@ class AdminController extends Controller
     }
 
     public function add(Request $request){
-
         $request = $request->validate([
             'username' => 'required|unique:users',
             'passw' => 'required',
@@ -99,7 +98,7 @@ class AdminController extends Controller
 
         $users = new user();
         $users->username = $request['username'];
-        $users->password = Hash::make($request['password']);
+        $users->password = Hash::make($request['passw']);
         $users->role = $request['role'];
         $users->save();
 

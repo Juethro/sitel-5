@@ -11,7 +11,7 @@
     <div class="flex justify-center">
         <div class="max-w-md">
             <div class="grid grid-2 gap-4">
-                <form action="{{ route('admin.add') }}" method="POST" class="w-full space-y-4">
+                <form action="{{ Route('admin.addUser') }}" method="POST" class="w-full space-y-4">
                     @csrf
     
                     <div class="flex">

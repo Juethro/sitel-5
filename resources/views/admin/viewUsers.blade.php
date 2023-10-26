@@ -8,8 +8,8 @@
             </div>
         </div>
         <div class="flex justify-end mt-4">
-            <div class="w-32 h-6 bg-[#DC4295] flex justify-center items-center rounded text-center text-white text-sm mb-4">
-                <a href="/admin/register">+ Tambah User</a>
+            <div class="w-32 h-6 bg-[rgb(220,66,149)] flex justify-center items-center rounded text-center text-white text-sm mb-4">
+                <a href="{{ route('admin.register') }}">+ Tambah User</a>
             </div>
         </div>
         <hr />
@@ -25,6 +25,7 @@
                         <th class="py-2 px-4 text-center">Id</th>
                         <th class="py-2 px-4 text-center">Username</th>
                         <th class="py-2 px-4 text-center">Role</th>
+                        <th class="py-2 px-4 text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,13 @@
                                 <td class="py-2 px-4 text-center">{{ $rs->id }}</td>
                                 <td class="py-2 px-4 text-center">{{ $rs->username }}</td>
                                 <td class="py-2 px-4 text-center">{{ $rs->role }}</td>
+                                <td class="py-2 px-4 text-center">
+                                    <div>
+                                        <form action="" method="post">
+                                            <button></button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     @else
