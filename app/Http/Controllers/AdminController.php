@@ -9,6 +9,7 @@ use App\Models\room;
 use App\Models\roomtype;
 use App\Models\user;
 use App\Models\booking;
+use App\Models\reports;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
 
@@ -86,7 +87,13 @@ class AdminController extends Controller
             ->where('status', 'checkouted')
             ->get();
 
-        return view('admin.HK', compact('data'));
+        $reported = DB::table('reports')
+            ->join('rooms', 'reports.id_room', '=', 'rooms.id_room')
+            ->select('rooms.id_room','reports.id_report', 'rooms.room_number', 'reports.description', 'rooms.status')
+            ->where('status', 'problem')
+            ->get();
+
+        return view('admin.HK', compact('data','reported'));
     }
 
     public function add(Request $request){

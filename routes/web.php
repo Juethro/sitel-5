@@ -78,5 +78,7 @@ Route::middleware(['auth', 'only-admin'])->group(function(){
     Route::get('/admin/HK', [AdminController::class, 'HK'])->name('admin.HK');
     Route::get('/admin/viewCheckIn', [AdminController::class, 'viewCheckIn'])->name('admin.viewCheckIn');
     Route::get('/admin/viewCheckOut', [AdminController::class, 'viewCheckOut'])->name('admin.viewCheckOut');
+    Route::post('/admin/viewCheckIn', [CheckInController::class, 'todaycheckin'])->name('admin.todaycheckin');
+
 });
 
