@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('checkinouts', function (Blueprint $table) {
             $table->id('id_check');
             $table->unsignedBigInteger('id_booking');
-            $table->foreign('id_booking')->references('id_booking')->on('bookings');
             $table->dateTime('checkIn_date')->nullable();
             $table->dateTime('checkOut_date')->nullable();
+            $table->foreign('id_booking')->references('id_booking')->on('bookings');
         });
     }
 
