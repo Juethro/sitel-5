@@ -10,6 +10,7 @@ use App\Http\Controllers\CheckInController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,9 +77,12 @@ Route::middleware(['auth', 'only-admin'])->group(function(){
     Route::get('/admin/viewRooms', [AdminController::class, 'viewRooms'])->name('admin.viewRooms');
     Route::get('/admin/viewUsers', [AdminController::class, 'viewUsers'])->name('admin.viewUsers');
     Route::get('/admin/HK', [AdminController::class, 'HK'])->name('admin.HK');
+    Route::get('/admin/reports', [AdminController::class, 'reports'])->name('admin.reports');
     Route::get('/admin/viewCheckIn', [AdminController::class, 'viewCheckIn'])->name('admin.viewCheckIn');
     Route::get('/admin/viewCheckOut', [AdminController::class, 'viewCheckOut'])->name('admin.viewCheckOut');
     Route::post('/admin/viewCheckIn', [CheckInController::class, 'todaycheckin'])->name('admin.todaycheckin');
 
 });
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 

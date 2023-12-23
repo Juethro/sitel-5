@@ -10,8 +10,18 @@ use App\Models\roomtype;
 use App\Models\user;
 use App\Models\booking;
 use App\Models\reports;
+
+use App\Charts\LineChartRooms;
+use App\Charts\LineChartProfit;
+use App\Charts\BarChartProfit;
+use App\Charts\BarChartRooms;
+use App\Charts\PieChartRooms;
+use App\Charts\HeatmapChart;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
+
+
 
 class AdminController extends Controller
 {
@@ -94,6 +104,32 @@ class AdminController extends Controller
             ->get();
 
         return view('admin.HK', compact('data','reported'));
+    }
+
+    public function reports(
+        LineChartProfit $lineChartProfit, 
+        LineChartRooms $lineChartRooms, 
+        BarChartProfit $barChartProfit, 
+        BarChartRooms $barChartRooms, 
+        PieChartRooms $pieChartRooms, 
+        HeatmapChart $heatmapChart)
+    {
+        $lineChartRooms = $lineChartRooms->build();
+        $barChartProfit = $barChartProfit->build();
+        $barChartRooms = $barChartRooms->build();
+        $lineChartProfit = $lineChartProfit->build();
+        $pieChartRooms = $pieChartRooms->build();
+        $heatmapChart = $heatmapChart->build();
+
+        return view('admin.reports', [
+            'lineChartRooms' => $lineChartRooms,
+            'lineChartProfit' => $lineChartProfit,
+            'barChartProfit' => $barChartProfit,
+            'barChartRooms' => $barChartRooms,
+            'pieChartRooms' => $pieChartRooms,
+            'heatmapChart' => $heatmapChart
+        ]);
+
     }
 
     public function add(Request $request){
