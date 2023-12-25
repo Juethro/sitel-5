@@ -2,6 +2,8 @@
 
 namespace App\Charts;
 
+use App\Models\fact;
+use Illuminate\Support\Facades\DB;  
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class PieChartRooms
@@ -15,10 +17,24 @@ class PieChartRooms
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
+        $data = DB::connection('mysql_second')->table('fact_transcation')
+            ->select('Room Type', DB::raw('SUM(LoS) as total_terjual'))
+            ->groupBy('Room Type')
+            ->get();
+
+        $labels = [];
+        $datasets = [];
+    
+        foreach ($data as $row) {
+            $labels[] = $row->{'Room Type'};
+            $datasets[] = $row->total_terjual;
+        }
+
+        $formattedDatasets = array_map('intval', $datasets); 
+
         return $this->chart->pieChart()
-            ->setTitle('Top 3 scorers of the team.')
-            ->setSubtitle('Season 2021.')
-            ->addData([40, 50, 30])
-            ->setLabels(['Player 7', 'Player 10', 'Player 9']);
+            ->setTitle('Tren Total Penjualan Unit Kamar Tahun 2023')
+                ->addData($formattedDatasets)
+            ->setLabels($labels);
     }
 }

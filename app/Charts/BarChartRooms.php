@@ -2,6 +2,8 @@
 
 namespace App\Charts;
 
+use App\Models\fact;
+use Illuminate\Support\Facades\DB;  
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class BarChartRooms
@@ -15,12 +17,27 @@ class BarChartRooms
 
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
+        $data = DB::connection('mysql_second')->table('fact_transcation')
+        ->select('Room Type', DB::raw('SUM(LoS) as total_terjual'))
+        ->groupBy('Room Type')
+        ->get();
+
+    $labels = [];
+    $datasets = [];
+
+    foreach ($data as $row) {
+        $labels[] = $row->{'Room Type'};
+        $datasets[] = $row->total_terjual;
+    }
+
+    $formattedDatasets = array_map('intval', $datasets); 
+
         return $this->chart->barChart()
-            ->setTitle('Penjuan Setiap Tipe Kamar Perbulan Tahun 2023')
-            ->addData('Sigle Room', [6, 9, 3, 4, 10, 8])
-            ->addData('Junior Suite Room', [7, 3, 8, 2, 6, 4])
-            ->addData('Deluxe Room', [9, 1, 2, 6, 1, 7])
-            ->addData('President Room', [1, 4, 2, 8, 4, 3])
-            ->setXAxis(['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']);
+            ->setTitle('Penjuan Setiap Tipe Kamar Tahun 2023')
+            ->addData('Deluxe Room', [$formattedDatasets[0]])
+            ->addData('Junior Suite Room', [$formattedDatasets[1]])
+            ->addData('President Room', [$formattedDatasets[2]])
+            ->addData('Single Room', [$formattedDatasets[3]])
+            ->setXAxis([' ']);
     }
 }
