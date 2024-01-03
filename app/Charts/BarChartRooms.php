@@ -31,13 +31,20 @@ class BarChartRooms
     }
 
     $formattedDatasets = array_map('intval', $datasets); 
+    $formattedLabels = array_map('strval', $labels); 
+
+        // return $this->chart->barChart()
+        //     ->setTitle('Penjuan Setiap Tipe Kamar Tahun 2023')
+        //     ->addData('Deluxe Room', [$formattedDatasets[0]])
+        //     ->addData('Junior Suite Room', [$formattedDatasets[1]])
+        //     ->addData('President Room', [$formattedDatasets[2]])
+        //     ->addData('Single Room', [$formattedDatasets[3]])
+        //     ->setXAxis([' ']);
 
         return $this->chart->barChart()
-            ->setTitle('Penjuan Setiap Tipe Kamar Tahun 2023')
-            ->addData('Deluxe Room', [$formattedDatasets[0]])
-            ->addData('Junior Suite Room', [$formattedDatasets[1]])
-            ->addData('President Room', [$formattedDatasets[2]])
-            ->addData('Single Room', [$formattedDatasets[3]])
-            ->setXAxis([' ']);
+        ->setTitle('Penjuan Setiap Tipe Kamar Tahun 2023')
+        ->addData('Tipe Kamar', [$formattedDatasets[0], $formattedDatasets[1], $formattedDatasets[2], $formattedDatasets[3]])
+        ->setColors(['#7700ff'])
+        ->setXAxis($formattedLabels);
     }
 }

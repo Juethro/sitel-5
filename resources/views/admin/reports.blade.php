@@ -49,19 +49,36 @@
     
 </div>
 
+<div class="container px-4 mx-auto">
 
+    <div class="p-6 m-20 rounded shadow">
+        {!! $barChartGuest->container() !!}
+    </div>
+    
+</div>
 
+<div class="container px-4 mx-auto">
+
+    <div class="p-6 mx-2 rounded shadow">
+        {!! $barChartWaktuMenginap->container() !!}
+    </div>
+
+</div>
 
 <script src="{{ $lineChartRooms->cdn() }}"></script>
 <script src="{{ $lineChartProfit->cdn() }}"></script>
 <script src="{{ $barChartProfit->cdn() }}"></script>
 <script src="{{ $barChartRooms->cdn() }}"></script>
+<script src="{{ $barChartGuest->cdn() }}"></script>
+<script src="{{ $barChartWaktuMenginap->cdn() }}"></script>
 <script src="{{ $pieChartRooms->cdn() }}"></script>
 
 {{ $lineChartProfit->script() }}
 {{ $lineChartRooms->script() }}
 {{ $barChartProfit->script() }}
 {{ $barChartRooms->script() }}
+{{ $barChartGuest->script() }}
+{{ $barChartWaktuMenginap->script() }}
 {{ $pieChartRooms->script() }}
 </body>
 </html>

@@ -17,7 +17,9 @@ use App\Charts\LineChartRooms;
 use App\Charts\LineChartProfit;
 use App\Charts\BarChartProfit;
 use App\Charts\BarChartRooms;
+use App\Charts\BarChartGuest;
 use App\Charts\PieChartRooms;
+use App\Charts\BarChartWaktuMenginap;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
@@ -112,12 +114,16 @@ class AdminController extends Controller
         LineChartRooms $lineChartRooms, 
         BarChartProfit $barChartProfit, 
         BarChartRooms $barChartRooms, 
+        BarChartGuest $barChartGuest, 
+        BarChartWaktuMenginap $barChartWaktuMenginap, 
         PieChartRooms $pieChartRooms, 
    )
     {
         $lineChartRooms = $lineChartRooms->build();
         $barChartProfit = $barChartProfit->build();
         $barChartRooms = $barChartRooms->build();
+        $barChartGuest = $barChartGuest->build();
+        $barChartWaktuMenginap = $barChartWaktuMenginap->build();
         $lineChartProfit = $lineChartProfit->build();
         $pieChartRooms = $pieChartRooms->build();
 
@@ -126,8 +132,10 @@ class AdminController extends Controller
             'lineChartRooms' => $lineChartRooms,
             'lineChartProfit' => $lineChartProfit,
             'barChartProfit' => $barChartProfit,
+            'barChartGuest' => $barChartGuest,
+            'barChartWaktuMenginap' => $barChartWaktuMenginap,
             'barChartRooms' => $barChartRooms,
-            'pieChartRooms' => $pieChartRooms
+            'pieChartRooms' => $pieChartRooms,
         ]);
 
     }
