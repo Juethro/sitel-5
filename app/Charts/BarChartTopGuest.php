@@ -6,7 +6,7 @@ use App\Models\fact;
 use Illuminate\Support\Facades\DB; 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
-class BarChartGuest
+class BarChartTopGuest
 {
     protected $chart;
 
@@ -15,11 +15,11 @@ class BarChartGuest
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\BarChart
+    public function build(): \ArielMejiaDev\LarapexCharts\HorizontalBar
     {        
         $all = DB::connection('mysql_second')->table('fact_transcation')
-        ->select('City', DB::raw("SUM(`LoS`) as total_payment"))
-        ->groupBy('City')
+        ->select('Nama Tamu', DB::raw("SUM(`Total Payment`) as total_payment"))
+        ->groupBy('Nama Tamu')
         ->orderByDesc('total_payment') 
         ->limit(10)
         ->get();
@@ -39,21 +39,25 @@ class BarChartGuest
     //     ->addData('kota asal',[$data])
     //     ->setXAxis([$label]);
     // }
-            $cityLabels = []; 
+            $GuestName = []; 
             $losDatasets = [];
 
             foreach ($all as $row) {
-                $cityLabels[] = $row->City;  
+                $GuestName[] = $row->{'Nama Tamu'};  
                 $losDatasets[] = $row->total_payment;
                 }
 
             $losDatasets = array_map('intval', $losDatasets);
-            $cityLabels = array_map('strval', $cityLabels);
+            $Name = array_map('strval', $GuestName);
+            
+            $data = array_map(function($item) {
+                return $item/1000000;
+              }, $losDatasets);
 
-            return $this->chart->barChart()
-            ->setTitle('Top 10 Kota Asal Customer Yang Paling Sering Menginap Tahun 2023')
-            ->addData('Los', $losDatasets) 
-            ->setColors(['#e07400'])
-            ->setXAxis($cityLabels);
+            return $this->chart->HorizontalBarChart()
+            ->setTitle('Top 10 Customer di Tahun 2023')
+            ->addData('Total Transaksi (Juta Rupiah)', $data) 
+            ->setColors(['#fa0505'])
+            ->setXAxis($Name);
             }
 }

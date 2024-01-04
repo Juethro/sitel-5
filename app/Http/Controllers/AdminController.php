@@ -17,7 +17,8 @@ use App\Charts\LineChartRooms;
 use App\Charts\LineChartProfit;
 use App\Charts\BarChartProfit;
 use App\Charts\BarChartRooms;
-use App\Charts\BarChartGuest;
+use App\Charts\BarChartGuestCity;
+use App\Charts\BarChartTopGuest;
 use App\Charts\PieChartRooms;
 use App\Charts\BarChartWaktuMenginap;
 
@@ -114,7 +115,8 @@ class AdminController extends Controller
         LineChartRooms $lineChartRooms, 
         BarChartProfit $barChartProfit, 
         BarChartRooms $barChartRooms, 
-        BarChartGuest $barChartGuest, 
+        BarChartTopGuest $BarChartTopGuest, 
+        BarChartGuestCity $barChartGuestCity, 
         BarChartWaktuMenginap $barChartWaktuMenginap, 
         PieChartRooms $pieChartRooms, 
    )
@@ -122,7 +124,8 @@ class AdminController extends Controller
         $lineChartRooms = $lineChartRooms->build();
         $barChartProfit = $barChartProfit->build();
         $barChartRooms = $barChartRooms->build();
-        $barChartGuest = $barChartGuest->build();
+        $barChartGuestCity = $barChartGuestCity->build();
+        $BarChartTopGuest = $BarChartTopGuest->build();
         $barChartWaktuMenginap = $barChartWaktuMenginap->build();
         $lineChartProfit = $lineChartProfit->build();
         $pieChartRooms = $pieChartRooms->build();
@@ -132,7 +135,8 @@ class AdminController extends Controller
             'lineChartRooms' => $lineChartRooms,
             'lineChartProfit' => $lineChartProfit,
             'barChartProfit' => $barChartProfit,
-            'barChartGuest' => $barChartGuest,
+            'barChartGuestCity' => $barChartGuestCity,
+            'BarChartTopGuest' => $BarChartTopGuest,
             'barChartWaktuMenginap' => $barChartWaktuMenginap,
             'barChartRooms' => $barChartRooms,
             'pieChartRooms' => $pieChartRooms,
